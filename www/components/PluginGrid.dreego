@@ -1,0 +1,10 @@
+Component PluginGrid ()
+
+<div>
+    <section id="plugins" aria-labelledby="plugins-heading" class="py-12">
+        <h2 id="plugins-heading" class="text-3xl font-bold text-slate-900 mb-8">Active Plugins</h2>
+        <div class="grid md:grid-cols-3 gap-6">
+            {#slot}
+        </div>
+    </section>
+</div>
