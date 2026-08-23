@@ -4,6 +4,7 @@ import WSEcho "components/WSEcho.dreego"
 import Hero "components/Hero.dreego"
 import PluginCard "components/PluginCard.dreego"
 import PluginGrid "components/PluginGrid.dreego"
+import LiveDemos "components/LiveDemos.dreego"
 import TailwindSection "components/TailwindSection.dreego"
 
 <head>
@@ -19,26 +20,23 @@ import TailwindSection "components/TailwindSection.dreego"
     <@Hero title={title} subtitle={subtitle} />
 
     <@PluginGrid>
-        <@PluginCard icon="🔌" name="plugin-example" description="Greeting and health endpoints.">
+        <@PluginCard icon="🔌" name="plugin-example" description="Greeting and health endpoints." accent="bg-blue-100">
             <code class="px-2 py-1 bg-slate-100 rounded text-slate-600">/example/greet/World</code>
             <code class="px-2 py-1 bg-slate-100 rounded text-slate-600">/example/health</code>
         </@PluginCard>
-        <@PluginCard icon="📡" name="plugin-sse" description="Server-Sent Events streaming.">
+        <@PluginCard icon="📡" name="plugin-sse" description="Server-Sent Events streaming." accent="bg-emerald-100">
             <code class="px-2 py-1 bg-slate-100 rounded text-slate-600">/sse</code>
         </@PluginCard>
-        <@PluginCard icon="⚡" name="plugin-websocket" description="Bidirectional real-time communication.">
+        <@PluginCard icon="⚡" name="plugin-websocket" description="Bidirectional real-time communication." accent="bg-purple-100">
             <code class="px-2 py-1 bg-slate-100 rounded text-slate-600">/ws</code>
         </@PluginCard>
     </@PluginGrid>
 
-    <section aria-labelledby="live-heading" class="py-12">
-        <h2 id="live-heading" class="text-3xl font-bold text-slate-900 mb-8">Live Demos</h2>
-        <div class="grid md:grid-cols-2 gap-6">
-            <@SSECard />
-            <@WSCard />
-            <@WSEcho />
-        </div>
-    </section>
+    <@LiveDemos>
+        <@SSECard />
+        <@WSCard />
+        <@WSEcho />
+    </@LiveDemos>
 
     <@TailwindSection />
 </div>

@@ -1,0 +1,10 @@
+Component LiveDemos ()
+
+<div>
+<section aria-labelledby="live-heading" class="py-12">
+    <h2 id="live-heading" class="text-3xl font-bold text-slate-900 mb-8">Live Demos</h2>
+    <div class="grid md:grid-cols-2 gap-6">
+        {#slot}
+    </div>
+</section>
+</div>
