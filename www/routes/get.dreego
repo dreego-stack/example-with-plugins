@@ -105,19 +105,19 @@
                     const wsInput = document.getElementById("ws-input");
                     const wsBtn = document.getElementById("ws-send");
                     let socket;
-                    let expectingEcho = false;
+                    let lastSent = "";
+                    let echoTimeout;
                     function connect() {
                         socket = new WebSocket("ws://" + location.host + "/ws");
                         socket.onopen = () => { wsMsg.textContent = "connected, waiting for broadcast..."; };
                         socket.onmessage = (e) => {
-                            if (expectingEcho) {
+                            if (lastSent && e.data === lastSent) {
                                 wsEcho.textContent = e.data;
-                                expectingEcho = false;
-                                setTimeout(() => {
-                                    if (wsEcho.textContent === e.data) {
-                                        wsEcho.textContent = "send a message to see the echo";
-                                    }
-                                }, 3000);
+                                lastSent = "";
+                                clearTimeout(echoTimeout);
+                                echoTimeout = setTimeout(() => {
+                                    wsEcho.textContent = "send a message to see the echo";
+                                }, 5000);
                             } else {
                                 wsMsg.textContent = e.data;
                             }
@@ -126,8 +126,13 @@
                     }
                     wsBtn.addEventListener("click", () => {
                         if (socket && socket.readyState === 1) {
-                            expectingEcho = true;
+                            lastSent = wsInput.value;
                             socket.send(wsInput.value);
+                            clearTimeout(echoTimeout);
+                            echoTimeout = setTimeout(() => {
+                                wsEcho.textContent = "echo timeout (message lost in broadcast noise)";
+                                lastSent = "";
+                            }, 2000);
                         }
                     });
                     wsInput.addEventListener("keydown", (e) => {
