@@ -2,8 +2,8 @@ github.com/dreego-stack/dreego v0.0.71 h1:xqeoLWDtkM2A5yMFGnRNYqICz6WHgkrFwXzLEg
 github.com/dreego-stack/dreego v0.0.71/go.mod h1:NMXS0nN8PUU6ywpjbTsZxaXv3KKmvItUTqa54KeL6uE=
 github.com/dreego-stack/plugin-example v0.0.1 h1:fd3STvIeMKhj3b6FdX/9cLveXlHayLR9LzVJLtsRcgY=
 github.com/dreego-stack/plugin-example v0.0.1/go.mod h1:Q9UNfQSzeoqpOEtWPFTAbNB460uFUbLK2b+QCnvEK4Q=
-github.com/dreego-stack/plugin-sse v0.0.1 h1:Y8nB8503EXNSRlCIc9+W4F0DwG4NwN6useBY49BhCyc=
-github.com/dreego-stack/plugin-sse v0.0.1/go.mod h1:T27NWPPrnrl6T0vCmY9jI423kzH1+BN3kjlNTxynkGQ=
+github.com/dreego-stack/plugin-sse v0.0.2 h1:MEFa4eSNyKFtR0tCDsD8Ivncbu8tu2EqNk5WaXa6ZAY=
+github.com/dreego-stack/plugin-sse v0.0.2/go.mod h1:T27NWPPrnrl6T0vCmY9jI423kzH1+BN3kjlNTxynkGQ=
 github.com/dreego-stack/plugin-tailwind v0.0.1 h1:2LZ5bsRPkg3MpPjDKnML9Df7VIrkRHc2HONbuO6sjds=
 github.com/dreego-stack/plugin-tailwind v0.0.1/go.mod h1:92Zz6E0i+uTVPiwqSQgxdN2f8uC914pTIYMKag2YtA0=
 github.com/dreego-stack/plugin-websocket v0.0.1 h1:XJB3n9JNpQWxUtgBrLluOCW2+5TxrXKRaDnn/TQRXHg=
