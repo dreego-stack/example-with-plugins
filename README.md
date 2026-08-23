@@ -47,7 +47,7 @@ sh $(go env GOMODCACHE)/github.com/dreego-stack/plugin-tailwind*/templates/setup
 dreego build
 ```
 
-Then add `<link rel="stylesheet" href="/static/tailwind.css">` to the layout head.
+Then add `<link rel="stylesheet" href="/tailwind.css">` to the layout head.
 
 ## License
 

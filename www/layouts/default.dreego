@@ -1,37 +1,39 @@
+<div>
+<html lang="en">
 <head>
     <title>Example with Plugins</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/tailwind.css">
     {#head}
 </head>
+<body class="min-h-screen bg-slate-50 text-slate-900 font-sans antialiased">
 
-<div>
-<!doctype html>
-<html lang="en">
-<head>
-</head>
-<body>
-    <a href="#main" class="skip-link">skip to content</a>
-    <nav aria-label="Primary">
-        <a href="/">Home</a>
-        <a href="/about">About</a>
-    </nav>
-    <main id="main">
+    <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:bg-slate-900 focus:text-white focus:px-4 focus:py-2 focus:rounded-lg">skip to content</a>
+
+    <header class="sticky top-0 z-40 backdrop-blur-xl bg-white/80 border-b border-slate-200/60">
+        <nav aria-label="Primary" class="max-w-4xl mx-auto px-6 h-16 flex items-center justify-between">
+            <a href="/" class="text-xl font-bold tracking-tight text-slate-900">
+                Dreego<span class="text-blue-600">.</span>Plugins</a>
+            <div class="flex items-center gap-6 text-sm font-medium text-slate-600">
+                <a href="/" class="hover:text-slate-900 transition-colors">Home</a>
+                <a href="/about" class="hover:text-slate-900 transition-colors">About</a>
+                <a href="/example/health" class="hover:text-slate-900 transition-colors">Health</a>
+                <a href="https://github.com/dreego-stack/dreego" class="text-slate-400 hover:text-slate-900 transition-colors" aria-label="GitHub repository">GitHub</a>
+            </div>
+        </nav>
+    </header>
+
+    <main id="main" class="max-w-4xl mx-auto px-6 py-12">
     {#slot}
     </main>
-    <style>
-.skip-link { position: absolute; left: -9999px; }
-.skip-link:focus { position: fixed; top: 0.5rem; left: 0.5rem; z-index: 100; padding: 0.5rem 1rem; background: #000; color: #fff; }
-body { font-family: system-ui, sans-serif; max-width: 800px; margin: 0 auto; padding: 1rem; line-height: 1.5; color: #1a1a1a; }
-nav { padding: 1rem 0; border-bottom: 1px solid #ddd; }
-nav a { margin-right: 1rem; color: #0066cc; }
-nav a:hover { text-decoration: underline; }
-code { background: #f4f4f4; padding: 0.1rem 0.3rem; border-radius: 3px; font-family: monospace; }
-pre { background: #f4f4f4; padding: 1rem; border-radius: 6px; overflow-x: auto; }
-section { margin: 2rem 0; padding: 1rem 0; border-top: 1px solid #eee; }
-button { padding: 0.4rem 1rem; cursor: pointer; }
-input { padding: 0.4rem; margin: 0 0.5rem; }
-    </style>
+
+    <footer class="border-t border-slate-200 mt-16">
+        <div class="max-w-4xl mx-auto px-6 py-8 text-center">
+            <p class="text-sm text-slate-400">Built with Dreego + plugin-tailwind + plugin-sse + plugin-websocket</p>
+        </div>
+    </footer>
+
 </body>
 </html>
 </div>

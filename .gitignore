@@ -3,3 +3,6 @@ bin/
 dree.go
 .DS_Store
 smd.toml
+node_modules/
+package.json
+package-lock.json

@@ -1,7 +1,5 @@
 services:
   app:
-    build:
-      context: ..
-      dockerfile: example-with-plugins/Dockerfile
+    build: .
     ports:
       - "3000:3000"

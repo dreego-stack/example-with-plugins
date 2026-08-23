@@ -9,6 +9,7 @@ import (
 	dreego "github.com/dreego-stack/dreego/core"
 	example "github.com/dreego-stack/plugin-example"
 	sse "github.com/dreego-stack/plugin-sse"
+	_ "github.com/dreego-stack/plugin-tailwind"
 	ws "github.com/dreego-stack/plugin-websocket"
 
 	"example-with-plugins/www"

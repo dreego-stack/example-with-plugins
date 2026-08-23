@@ -7,65 +7,124 @@
 </go>
 
 <div>
-    <h1>{{ title }}</h1>
-    <p>This app demonstrates Dreego plugins working together in a real web application.</p>
-
-    <section aria-labelledby="plugins-heading">
-        <h2 id="plugins-heading">Active Plugins</h2>
-        <ul>
-            <li><strong>plugin-example</strong> — greeting endpoint at <code>/example/greet/World</code> and health check at <code>/example/health</code></li>
-            <li><strong>plugin-sse</strong> — Server-Sent Events at <code>/sse</code> (broadcasts server time every 2 seconds)</li>
-            <li><strong>plugin-websocket</strong> — WebSocket at <code>/ws</code> (echoes messages and broadcasts server time)</li>
-        </ul>
+    <section class="text-center py-16">
+        <h1 class="text-5xl md:text-6xl font-extrabold tracking-tight text-slate-900 mb-6">
+            {{ title }}</h1>
+        <p class="text-lg text-slate-600 max-w-2xl mx-auto mb-8">
+            A real web app demonstrating Server-Sent Events, WebSocket, and build-time Tailwind CSS — all powered by Dreego plugins. Go standard library only, single binary deploy.</p>
+        <div class="flex justify-center gap-4">
+            <a href="#plugins" class="px-6 py-3 bg-slate-900 text-white font-semibold rounded-xl hover:bg-slate-800 transition-colors">Explore plugins</a>
+            <a href="/about" class="px-6 py-3 ring-1 ring-slate-300 text-slate-700 font-semibold rounded-xl hover:bg-slate-100 transition-colors">About</a>
+        </div>
     </section>
 
-    <section aria-labelledby="live-heading">
-        <h2 id="live-heading">Live SSE Demo</h2>
-        <p>Server time updates via Server-Sent Events:</p>
-        <p id="sse-time" aria-live="polite">waiting for events...</p>
+    <section id="plugins" aria-labelledby="plugins-heading" class="py-12">
+        <h2 id="plugins-heading" class="text-3xl font-bold text-slate-900 mb-8">Active Plugins</h2>
+        <div class="grid md:grid-cols-3 gap-6">
+            <div class="p-6 bg-white rounded-2xl border border-slate-200 shadow-sm">
+                <div class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center mb-4">
+                    <span class="text-2xl" aria-hidden="true">🔌</span>
+                </div>
+                <h3 class="text-lg font-semibold text-slate-900 mb-2">plugin-example</h3>
+                <p class="text-sm text-slate-500 mb-4">Greeting and health endpoints.</p>
+                <div class="flex flex-wrap gap-2 text-xs">
+                    <code class="px-2 py-1 bg-slate-100 rounded text-slate-600">/example/greet/World</code>
+                    <code class="px-2 py-1 bg-slate-100 rounded text-slate-600">/example/health</code>
+                </div>
+            </div>
+            <div class="p-6 bg-white rounded-2xl border border-slate-200 shadow-sm">
+                <div class="w-12 h-12 bg-emerald-100 rounded-xl flex items-center justify-center mb-4">
+                    <span class="text-2xl" aria-hidden="true">📡</span>
+                </div>
+                <h3 class="text-lg font-semibold text-slate-900 mb-2">plugin-sse</h3>
+                <p class="text-sm text-slate-500 mb-4">Server-Sent Events streaming.</p>
+                <div class="flex flex-wrap gap-2 text-xs">
+                    <code class="px-2 py-1 bg-slate-100 rounded text-slate-600">/sse</code>
+                </div>
+            </div>
+            <div class="p-6 bg-white rounded-2xl border border-slate-200 shadow-sm">
+                <div class="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center mb-4">
+                    <span class="text-2xl" aria-hidden="true">⚡</span>
+                </div>
+                <h3 class="text-lg font-semibold text-slate-900 mb-2">plugin-websocket</h3>
+                <p class="text-sm text-slate-500 mb-4">Bidirectional real-time communication.</p>
+                <div class="flex flex-wrap gap-2 text-xs">
+                    <code class="px-2 py-1 bg-slate-100 rounded text-slate-600">/ws</code>
+                </div>
+            </div>
+        </div>
     </section>
 
-    <section aria-labelledby="ws-heading">
-        <h2 id="ws-heading">Live WebSocket Demo</h2>
-        <p>Open a WebSocket connection and send a message:</p>
-        <p>Latest WS message: <span id="ws-msg" aria-live="polite">none yet</span></p>
-        <label for="ws-input">Message:</label>
-        <input id="ws-input" type="text" value="Hello WebSocket" />
-        <button id="ws-send" type="button">Send</button>
+    <section aria-labelledby="live-heading" class="py-12">
+        <h2 id="live-heading" class="text-3xl font-bold text-slate-900 mb-8">Live Demos</h2>
+
+        <div class="grid md:grid-cols-2 gap-6">
+            <div class="p-6 bg-white rounded-2xl border border-slate-200 shadow-sm">
+                <h3 class="text-lg font-semibold text-slate-900 mb-2 flex items-center gap-2">
+                    <span class="w-3 h-3 rounded-full bg-emerald-500" aria-hidden="true"></span>
+                    Server-Sent Events</h3>
+                <p class="text-sm text-slate-500 mb-4">Real-time server time via SSE:</p>
+                <div id="sse-time" aria-live="polite" class="p-4 bg-slate-900 rounded-xl font-mono text-emerald-400 text-lg">
+                    waiting for events...</div>
+                <script>
+                    const es = new EventSource("/sse");
+                    es.addEventListener("time", (e) => {
+                        document.getElementById("sse-time").textContent = e.data;
+                    });
+                    es.onerror = () => {
+                        document.getElementById("sse-time").textContent = "connection lost, reconnecting...";
+                    };
+                </script>
+            </div>
+
+            <div class="p-6 bg-white rounded-2xl border border-slate-200 shadow-sm">
+                <h3 class="text-lg font-semibold text-slate-900 mb-2 flex items-center gap-2">
+                    <span class="w-3 h-3 rounded-full bg-purple-500" aria-hidden="true"></span>
+                    WebSocket</h3>
+                <p class="text-sm text-slate-500 mb-4">Echo and broadcast messages:</p>
+                <div id="ws-msg" aria-live="polite" class="p-4 bg-slate-900 rounded-xl font-mono text-purple-400 text-lg mb-4">
+                    not connected</div>
+                <div class="flex gap-2">
+                    <label for="ws-input" class="sr-only">Message to send</label>
+                    <input id="ws-input" type="text" value="Hello WebSocket" class="flex-1 px-3 py-2 border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none" />
+                    <button id="ws-send" type="button" class="px-4 py-2 bg-slate-900 text-white text-sm font-semibold rounded-lg hover:bg-slate-800 transition-colors">Send</button>
+                </div>
+                <script>
+                    const wsStatus = document.getElementById("ws-msg");
+                    const wsInput = document.getElementById("ws-input");
+                    const wsBtn = document.getElementById("ws-send");
+                    let socket;
+                    function connect() {
+                        socket = new WebSocket("ws://" + location.host + "/ws");
+                        socket.onopen = () => { wsStatus.textContent = "connected"; };
+                        socket.onmessage = (e) => { wsStatus.textContent = e.data; };
+                        socket.onclose = () => { wsStatus.textContent = "disconnected, reconnecting..."; setTimeout(connect, 2000); };
+                    }
+                    wsBtn.addEventListener("click", () => {
+                        if (socket && socket.readyState === 1) {
+                            socket.send(wsInput.value);
+                        }
+                    });
+                    wsBtn.addEventListener("keydown", (e) => {
+                        if (e.key === "Enter") { socket.send(wsInput.value); }
+                    });
+                    connect();
+                </script>
+            </div>
+        </div>
     </section>
 
-    <section aria-labelledby="tailwind-heading">
-        <h2 id="tailwind-heading">Optional: Tailwind CSS Plugin</h2>
-        <p>To add Tailwind CSS to this demo:</p>
-        <pre>go get github.com/dreego-stack/plugin-tailwind
-sh $(go env GOMODCACHE)/github.com/dreego-stack/plugin-tailwind*/templates/setup.sh
-dreego build</pre>
-        <p>Then add <code>&lt;link rel="stylesheet" href="/static/tailwind.css"&gt;</code> to the layout head.</p>
+    <section aria-labelledby="tailwind-heading" class="py-12">
+        <h2 id="tailwind-heading" class="text-3xl font-bold text-slate-900 mb-8">Build-Time: Tailwind CSS</h2>
+        <div class="p-6 bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl border border-blue-200">
+            <p class="text-slate-700 mb-4">This page is styled with Tailwind CSS, compiled at build time by <strong class="font-semibold">plugin-tailwind</strong>. The Docker build runs:</p>
+            <ol class="space-y-2 text-sm text-slate-600">
+                <li class="flex gap-2"><span class="font-mono text-blue-600">1.</span> <code class="bg-white px-2 py-0.5 rounded">npm install -D tailwindcss</code> — install Tailwind</li>
+                <li class="flex gap-2"><span class="font-mono text-blue-600">2.</span> <code class="bg-white px-2 py-0.5 rounded">tailwindcss -i ... -o ...</code> — compile CSS</li>
+                <li class="flex gap-2"><span class="font-mono text-blue-600">3.</span> <code class="bg-white px-2 py-0.5 rounded">dreego generate</code> — transpile + embed CSS</li>
+                <li class="flex gap-2"><span class="font-mono text-blue-600">4.</span> <code class="bg-white px-2 py-0.5 rounded">go build</code> — single binary</li>
+            </ol>
+            <p class="text-slate-700 mt-4">No Node.js at runtime. The compiled CSS is embedded in the Go binary.</p>
+        </div>
     </section>
 </div>
-
-<script>
-    var es = new EventSource("/sse");
-    es.addEventListener("time", function(e) {
-        document.getElementById("sse-time").textContent = e.data;
-    });
-    es.onerror = function() {
-        document.getElementById("sse-time").textContent = "connection lost";
-    };
-
-    var wsStatus = document.getElementById("ws-msg");
-    var wsInput = document.getElementById("ws-input");
-    var wsBtn = document.getElementById("ws-send");
-    var socket;
-    function connect() {
-        socket = new WebSocket("ws://" + location.host + "/ws");
-        socket.onmessage = function(e) { wsStatus.textContent = e.data; };
-        socket.onclose = function() { wsStatus.textContent = "disconnected"; setTimeout(connect, 2000); };
-    }
-    wsBtn.addEventListener("click", function() {
-        if (socket && socket.readyState === 1) {
-            socket.send(wsInput.value);
-        }
-    });
-    connect();
-</script>

@@ -1,0 +1,8 @@
+bin/
+node_modules/
+build/
+*.dree.go
+dree.go
+.git
+.DS_Store
+smd.toml
