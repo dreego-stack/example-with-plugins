@@ -1,0 +1,71 @@
+<head>
+    <meta name="description" content="Dreego demo app with example, SSE, and WebSocket plugins">
+</head>
+
+<go>
+    title := "Dreego Plugin Showcase"
+</go>
+
+<div>
+    <h1>{{ title }}</h1>
+    <p>This app demonstrates Dreego plugins working together in a real web application.</p>
+
+    <section aria-labelledby="plugins-heading">
+        <h2 id="plugins-heading">Active Plugins</h2>
+        <ul>
+            <li><strong>plugin-example</strong> — greeting endpoint at <code>/example/greet/World</code> and health check at <code>/example/health</code></li>
+            <li><strong>plugin-sse</strong> — Server-Sent Events at <code>/sse</code> (broadcasts server time every 2 seconds)</li>
+            <li><strong>plugin-websocket</strong> — WebSocket at <code>/ws</code> (echoes messages and broadcasts server time)</li>
+        </ul>
+    </section>
+
+    <section aria-labelledby="live-heading">
+        <h2 id="live-heading">Live SSE Demo</h2>
+        <p>Server time updates via Server-Sent Events:</p>
+        <p id="sse-time" aria-live="polite">waiting for events...</p>
+    </section>
+
+    <section aria-labelledby="ws-heading">
+        <h2 id="ws-heading">Live WebSocket Demo</h2>
+        <p>Open a WebSocket connection and send a message:</p>
+        <p>Latest WS message: <span id="ws-msg" aria-live="polite">none yet</span></p>
+        <label for="ws-input">Message:</label>
+        <input id="ws-input" type="text" value="Hello WebSocket" />
+        <button id="ws-send" type="button">Send</button>
+    </section>
+
+    <section aria-labelledby="tailwind-heading">
+        <h2 id="tailwind-heading">Optional: Tailwind CSS Plugin</h2>
+        <p>To add Tailwind CSS to this demo:</p>
+        <pre>go get github.com/dreego-stack/plugin-tailwind
+sh $(go env GOMODCACHE)/github.com/dreego-stack/plugin-tailwind*/templates/setup.sh
+dreego build</pre>
+        <p>Then add <code>&lt;link rel="stylesheet" href="/static/tailwind.css"&gt;</code> to the layout head.</p>
+    </section>
+</div>
+
+<script>
+    var es = new EventSource("/sse");
+    es.addEventListener("time", function(e) {
+        document.getElementById("sse-time").textContent = e.data;
+    });
+    es.onerror = function() {
+        document.getElementById("sse-time").textContent = "connection lost";
+    };
+
+    var wsStatus = document.getElementById("ws-msg");
+    var wsInput = document.getElementById("ws-input");
+    var wsBtn = document.getElementById("ws-send");
+    var socket;
+    function connect() {
+        socket = new WebSocket("ws://" + location.host + "/ws");
+        socket.onmessage = function(e) { wsStatus.textContent = e.data; };
+        socket.onclose = function() { wsStatus.textContent = "disconnected"; setTimeout(connect, 2000); };
+    }
+    wsBtn.addEventListener("click", function() {
+        if (socket && socket.readyState === 1) {
+            socket.send(wsInput.value);
+        }
+    });
+    connect();
+</script>

@@ -1,0 +1,37 @@
+<head>
+    <title>Example with Plugins</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {#head}
+</head>
+
+<div>
+<!doctype html>
+<html lang="en">
+<head>
+</head>
+<body>
+    <a href="#main" class="skip-link">skip to content</a>
+    <nav aria-label="Primary">
+        <a href="/">Home</a>
+        <a href="/about">About</a>
+    </nav>
+    <main id="main">
+    {#slot}
+    </main>
+    <style>
+.skip-link { position: absolute; left: -9999px; }
+.skip-link:focus { position: fixed; top: 0.5rem; left: 0.5rem; z-index: 100; padding: 0.5rem 1rem; background: #000; color: #fff; }
+body { font-family: system-ui, sans-serif; max-width: 800px; margin: 0 auto; padding: 1rem; line-height: 1.5; color: #1a1a1a; }
+nav { padding: 1rem 0; border-bottom: 1px solid #ddd; }
+nav a { margin-right: 1rem; color: #0066cc; }
+nav a:hover { text-decoration: underline; }
+code { background: #f4f4f4; padding: 0.1rem 0.3rem; border-radius: 3px; font-family: monospace; }
+pre { background: #f4f4f4; padding: 1rem; border-radius: 6px; overflow-x: auto; }
+section { margin: 2rem 0; padding: 1rem 0; border-top: 1px solid #eee; }
+button { padding: 0.4rem 1rem; cursor: pointer; }
+input { padding: 0.4rem; margin: 0 0.5rem; }
+    </style>
+</body>
+</html>
+</div>

@@ -1,0 +1,5 @@
+bin/
+*_dreego.go
+dree.go
+.DS_Store
+smd.toml
