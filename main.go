@@ -50,7 +50,7 @@ func main() {
 }
 
 func broadcastLoop() {
-	ticker := time.NewTicker(2 * time.Second)
+	ticker := time.NewTicker(100 * time.Millisecond)
 	defer ticker.Stop()
 	for range ticker.C {
 		msg := fmt.Sprintf("server time: %s", time.Now().Format("15:04:05"))
