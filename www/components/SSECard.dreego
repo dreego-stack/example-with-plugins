@@ -1,0 +1,19 @@
+Component SSECard ()
+
+<div class="p-6 bg-white rounded-2xl border border-slate-200 shadow-sm">
+    <h3 class="text-lg font-semibold text-slate-900 mb-2 flex items-center gap-2">
+        <span class="w-3 h-3 rounded-full bg-emerald-500" aria-hidden="true"></span>
+        Server-Sent Events</h3>
+    <p class="text-sm text-slate-500 mb-4">Real-time server time via SSE:</p>
+    <div id="sse-time" aria-live="polite" class="p-4 bg-slate-900 rounded-xl font-mono text-emerald-400 text-lg">
+        waiting for events...</div>
+    <script>
+        const es = new EventSource("/sse");
+        es.addEventListener("time", (e) => {
+            document.getElementById("sse-time").textContent = e.data;
+        });
+        es.onerror = () => {
+            document.getElementById("sse-time").textContent = "connection lost, reconnecting...";
+        };
+    </script>
+</div>

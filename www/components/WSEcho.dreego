@@ -1,0 +1,48 @@
+Component WSEcho ()
+
+<div class="p-6 bg-white rounded-2xl border border-slate-200 shadow-sm">
+    <h3 class="text-lg font-semibold text-slate-900 mb-2 flex items-center gap-2">
+        <span class="w-3 h-3 rounded-full bg-blue-500" aria-hidden="true"></span>
+        WebSocket Echo</h3>
+    <p class="text-sm text-slate-500 mb-4">Send a message and see the echo:</p>
+    <div id="ws-echo" aria-live="polite" class="p-3 bg-slate-900 rounded-xl font-mono text-blue-400 text-sm mb-4">
+        send a message to see the echo</div>
+    <div class="flex gap-2">
+        <label for="ws-input" class="sr-only">Message to send</label>
+        <input id="ws-input" type="text" value="Hello WebSocket" class="flex-1 px-3 py-2 border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none" />
+        <button id="ws-send" type="button" class="px-4 py-2 bg-slate-900 text-white text-sm font-semibold rounded-lg hover:bg-slate-800 transition-colors">Send</button>
+    </div>
+    <script>
+        const wsEcho = document.getElementById("ws-echo");
+        const wsInput = document.getElementById("ws-input");
+        const wsBtn = document.getElementById("ws-send");
+        let lastSent = "";
+        let echoTimeout;
+        window.wsHandlers.push(function(data) {
+            if (lastSent && data === lastSent) {
+                wsEcho.textContent = data;
+                lastSent = "";
+                clearTimeout(echoTimeout);
+                echoTimeout = setTimeout(function() {
+                    wsEcho.textContent = "send a message to see the echo";
+                }, 5000);
+            }
+        });
+        wsBtn.addEventListener("click", function() {
+            lastSent = wsInput.value;
+            if (window.wsSocket && window.wsSocket.readyState === 1) {
+                window.wsSocket.send(wsInput.value);
+            } else {
+                window.wsSendQueue.push(wsInput.value);
+            }
+            clearTimeout(echoTimeout);
+            echoTimeout = setTimeout(function() {
+                wsEcho.textContent = "echo timeout (message lost in broadcast noise)";
+                lastSent = "";
+            }, 2000);
+        });
+        wsInput.addEventListener("keydown", function(e) {
+            if (e.key === "Enter") { wsBtn.click(); }
+        });
+    </script>
+</div>
