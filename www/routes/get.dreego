@@ -11,12 +11,12 @@ import TailwindSection "components/TailwindSection.dreego"
     <meta name="description" content="Dreego demo app with example, SSE, and WebSocket plugins">
 </head>
 
-<go>
+<server>
     title := "Dreego Plugin Showcase"
     subtitle := "A real web app demonstrating Server-Sent Events, WebSocket, and build-time Tailwind CSS — all powered by Dreego plugins. Go standard library only, single binary deploy."
-</go>
+</server>
 
-<div>
+<body>
     <@Hero title={title} subtitle={subtitle} />
 
     <@PluginGrid>
@@ -39,4 +39,4 @@ import TailwindSection "components/TailwindSection.dreego"
     </@LiveDemos>
 
     <@TailwindSection />
-</div>
+</body>

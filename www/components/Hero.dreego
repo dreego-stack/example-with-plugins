@@ -1,6 +1,6 @@
 Component Hero (title string, subtitle string)
 
-<div class="text-center py-16">
+<body class="text-center py-16">
     <h1 class="text-5xl md:text-6xl font-extrabold tracking-tight text-slate-900 mb-6">
         {{ title }}</h1>
     <p class="text-lg text-slate-600 max-w-2xl mx-auto mb-8">
@@ -9,4 +9,4 @@ Component Hero (title string, subtitle string)
         <a href="#plugins" class="px-6 py-3 bg-slate-900 text-white font-semibold rounded-xl hover:bg-slate-800 transition-colors">Explore plugins</a>
         <a href="/about" class="px-6 py-3 ring-1 ring-slate-300 text-slate-700 font-semibold rounded-xl hover:bg-slate-100 transition-colors">About</a>
     </div>
-</div>
+</body>

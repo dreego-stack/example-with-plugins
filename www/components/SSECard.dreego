@@ -1,6 +1,6 @@
 Component SSECard ()
 
-<div class="p-6 bg-white rounded-2xl border border-slate-200 shadow-sm">
+<body class="p-6 bg-white rounded-2xl border border-slate-200 shadow-sm">
     <h3 class="text-lg font-semibold text-slate-900 mb-2 flex items-center gap-2">
         <span class="w-3 h-3 rounded-full bg-emerald-500" aria-hidden="true"></span>
         Server-Sent Events</h3>
@@ -16,4 +16,4 @@ Component SSECard ()
             document.getElementById("sse-time").textContent = "connection lost, reconnecting...";
         };
     </script>
-</div>
+</body>

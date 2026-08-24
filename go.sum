@@ -1,5 +1,5 @@
-github.com/dreego-stack/dreego v0.0.71 h1:xqeoLWDtkM2A5yMFGnRNYqICz6WHgkrFwXzLEgEekBE=
-github.com/dreego-stack/dreego v0.0.71/go.mod h1:NMXS0nN8PUU6ywpjbTsZxaXv3KKmvItUTqa54KeL6uE=
+github.com/dreego-stack/dreego v0.0.73 h1:LLIDguxLEoW1ur26Z3N2QSluuqczRdsf+83rNUIB8ZM=
+github.com/dreego-stack/dreego v0.0.73/go.mod h1:NMXS0nN8PUU6ywpjbTsZxaXv3KKmvItUTqa54KeL6uE=
 github.com/dreego-stack/plugin-example v0.0.1 h1:fd3STvIeMKhj3b6FdX/9cLveXlHayLR9LzVJLtsRcgY=
 github.com/dreego-stack/plugin-example v0.0.1/go.mod h1:Q9UNfQSzeoqpOEtWPFTAbNB460uFUbLK2b+QCnvEK4Q=
 github.com/dreego-stack/plugin-sse v0.0.2 h1:MEFa4eSNyKFtR0tCDsD8Ivncbu8tu2EqNk5WaXa6ZAY=
