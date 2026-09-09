@@ -1,42 +1,12 @@
-import SSECard "components/SSECard.dreego"
-import WSCard "components/WSCard.dreego"
-import WSEcho "components/WSEcho.dreego"
-import Hero "components/Hero.dreego"
-import PluginCard "components/PluginCard.dreego"
-import PluginGrid "components/PluginGrid.dreego"
-import LiveDemos "components/LiveDemos.dreego"
-import TailwindSection "components/TailwindSection.dreego"
-
 <head>
-    <meta name="description" content="Dreego demo app with example, SSE, and WebSocket plugins">
+    <title>GET route · Dreego Plugins</title>
 </head>
 
-<go>
-    title := "Dreego Plugin Showcase"
-    subtitle := "A real web app demonstrating Server-Sent Events, WebSocket, and build-time Tailwind CSS — all powered by Dreego plugins. Go standard library only, single binary deploy."
-</go>
-
-<div>
-    <@Hero title={title} subtitle={subtitle} />
-
-    <@PluginGrid>
-        <@PluginCard icon="🔌" name="plugin-example" description="Greeting and health endpoints." accent="bg-blue-100">
-            <code class="px-2 py-1 bg-slate-100 rounded text-slate-600">/example/greet/World</code>
-            <code class="px-2 py-1 bg-slate-100 rounded text-slate-600">/example/health</code>
-        </@PluginCard>
-        <@PluginCard icon="📡" name="plugin-sse" description="Server-Sent Events streaming." accent="bg-emerald-100">
-            <code class="px-2 py-1 bg-slate-100 rounded text-slate-600">/sse</code>
-        </@PluginCard>
-        <@PluginCard icon="⚡" name="plugin-websocket" description="Bidirectional real-time communication." accent="bg-purple-100">
-            <code class="px-2 py-1 bg-slate-100 rounded text-slate-600">/ws</code>
-        </@PluginCard>
-    </@PluginGrid>
-
-    <@LiveDemos>
-        <@SSECard />
-        <@WSCard />
-        <@WSEcho />
-    </@LiveDemos>
-
-    <@TailwindSection />
-</div>
+<body>
+    <section class="py-16" aria-labelledby="get-title">
+        <p class="text-sm font-semibold uppercase tracking-widest text-teal-600">Literal route</p>
+        <h1 id="get-title" class="mt-3 text-4xl font-bold tracking-tight text-slate-950">This is /get</h1>
+        <p class="mt-4 text-slate-600">The filename <code>get.dreego</code> is a literal URL segment in the current Dreego router.</p>
+        <a class="mt-6 inline-flex text-teal-700 underline" href="/">Back to the showcase</a>
+    </section>
+</body>

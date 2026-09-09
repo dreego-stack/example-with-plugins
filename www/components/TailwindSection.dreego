@@ -1,6 +1,6 @@
 Component TailwindSection ()
 
-<div>
+<body>
     <section aria-labelledby="tailwind-heading" class="py-12">
         <h2 id="tailwind-heading" class="text-3xl font-bold text-slate-900 mb-8">Build-Time: Tailwind CSS</h2>
         <div class="p-6 bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl border border-blue-200">
@@ -14,4 +14,4 @@ Component TailwindSection ()
             <p class="text-slate-700 mt-4">No Node.js at runtime. The compiled CSS is embedded in the Go binary.</p>
         </div>
     </section>
-</div>
+</body>

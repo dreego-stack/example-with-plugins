@@ -2,11 +2,11 @@
     <meta name="description" content="About the Dreego plugin showcase">
 </head>
 
-<go>
+<server>
     heading := "About This Demo"
-</go>
+</server>
 
-<div>
+<body>
     <section class="py-12">
         <h1 class="text-4xl font-extrabold tracking-tight text-slate-900 mb-6">{{ heading }}</h1>
         <p class="text-lg text-slate-600 mb-8">This is a Dreego web application that demonstrates the plugin ecosystem. It uses three runtime plugins and one build-time plugin:</p>
@@ -64,4 +64,4 @@
         <p class="text-slate-600 mt-8">All runtime plugins use the Go standard library only. The app is a single binary with no runtime external dependencies.</p>
         <a href="/" class="inline-flex items-center gap-2 mt-6 text-blue-600 hover:text-blue-700 font-medium">← Back to home</a>
     </section>
-</div>
+</body>

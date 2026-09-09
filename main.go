@@ -7,6 +7,7 @@ import (
 	"time"
 
 	dreego "github.com/dreego-stack/dreego/core"
+	ui "github.com/dreego-stack/dreego-ui"
 	example "github.com/dreego-stack/plugin-example"
 	sse "github.com/dreego-stack/plugin-sse"
 	_ "github.com/dreego-stack/plugin-tailwind"
@@ -31,6 +32,16 @@ func main() {
 	}
 
 	if err := ws.Register(app, ws.Options{Path: "/ws"}); err != nil {
+		log.Fatal(err)
+	}
+	if err := app.SetSessionStore(dreego.NewCookieStore([]byte("example-with-plugins-demo-secret-32-bytes"))); err != nil {
+		log.Fatal(err)
+	}
+
+	if _, err := ui.Register(app, ui.Options{
+		DefaultTheme: "black",
+		Preference:   ui.SessionPreference{},
+	}); err != nil {
 		log.Fatal(err)
 	}
 
