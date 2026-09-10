@@ -1,14 +1,16 @@
-import Button "components/dreegoui/Button.dreego"
-import Card "components/dreegoui/Card.dreego"
-import CodeBox "components/dreegoui/CodeBox.dreego"
-import Footer "components/dreegoui/Footer.dreego"
-import Icon "components/dreegoui/Icon.dreego"
-import Navbar "components/dreegoui/Navbar.dreego"
-import PageShell "components/dreegoui/PageShell.dreego"
-import PriceCard "components/dreegoui/PriceCard.dreego"
-import Sidebar "components/dreegoui/Sidebar.dreego"
-import ThemePicker "components/dreegoui/ThemePicker.dreego"
-import Toggle "components/dreegoui/Toggle.dreego"
+from "github.com/dreego-stack/dreego-ui/components/dreegoui" import {
+    Button,
+    Card,
+    CodeBox,
+    Footer,
+    Icon,
+    Navbar,
+    PageShell,
+    PriceCard,
+    Sidebar,
+    ThemePicker,
+    Toggle,
+}
 import PluginCard "components/PluginCard.dreego"
 import PluginGrid "components/PluginGrid.dreego"
 import LiveDemos "components/LiveDemos.dreego"
@@ -21,14 +23,21 @@ import TailwindSection "components/TailwindSection.dreego"
     <title>Dreego UI · Plugin ecosystem</title>
     <meta name="description" content="Dreego UI and plugin ecosystem showcase">
     <link rel="stylesheet" href="/dreego-ui/theme.css">
+    <style>
+        .dreego-page-shell__body { padding-top: 1rem; }
+        .dreego-page-shell__body { grid-template-columns: minmax(11rem, 15rem) minmax(0, 1fr); }
+        .dreego-page-shell__sidebar { align-self: start; position: sticky; top: 5rem; }
+        .dreego-page-shell__main > section:first-child { padding-top: 2rem; }
+        @media (max-width: 36rem) {
+            .dreego-page-shell__body { grid-template-columns: 1fr; }
+            .dreego-page-shell__sidebar { position: static; }
+        }
+    </style>
 </head>
 
 <server>
-    themes := []dreegoui.ThemeOption{
-        {ID: "white", Name: "White"},
-        {ID: "black", Name: "Black"},
-    }
-    selectedTheme := c.SessionVal(dreegoui.DefaultThemeSessionKey)
+    themes := []string{"white", "black"}
+    selectedTheme := c.SessionVal("dreego_ui_theme")
 </server>
 
 <body>
@@ -55,8 +64,8 @@ import TailwindSection "components/TailwindSection.dreego"
 
         <section class="py-12 md:py-20" aria-labelledby="hero-title">
             <p class="text-sm font-semibold uppercase tracking-widest text-teal-600">Calm · precise · private</p>
-            <h1 id="hero-title" class="mt-4 max-w-4xl text-5xl font-extrabold tracking-tight text-slate-950 md:text-7xl">Plugins that feel like one product.</h1>
-            <p class="mt-6 max-w-2xl text-lg leading-8 text-slate-600">A Dreego application combining real-time plugins with a typed, themeable interface system.</p>
+            <h1 id="hero-title" class="mt-4 max-w-4xl text-5xl font-extrabold tracking-tight text-white md:text-7xl">Plugins that feel like one product.</h1>
+            <p class="mt-6 max-w-2xl text-lg leading-8 text-slate-300">A Dreego application combining real-time plugins with a typed, themeable interface system.</p>
             <div class="mt-8 flex flex-wrap gap-3">
                 <@Button disabled={false} kind="submit">Explore the system</@Button>
                 <@Button disabled={false} variant="secondary"><a href="#plugins">View plugins</a></@Button>
@@ -64,7 +73,7 @@ import TailwindSection "components/TailwindSection.dreego"
         </section>
 
         <section id="plugins" aria-labelledby="plugins-heading">
-            <h2 id="plugins-heading" class="text-3xl font-bold tracking-tight text-slate-950">Active plugins</h2>
+            <h2 id="plugins-heading" class="text-3xl font-bold tracking-tight text-white">Active plugins</h2>
             <div class="mt-6 grid gap-5 md:grid-cols-3">
                 <@PluginCard icon="🔌" name="plugin-example" description="Greeting and health endpoints." accent="bg-teal-100"><code>/example/health</code></@PluginCard>
                 <@PluginCard icon="📡" name="plugin-sse" description="Server-Sent Events streaming." accent="bg-emerald-100"><code>/sse</code></@PluginCard>
@@ -73,16 +82,16 @@ import TailwindSection "components/TailwindSection.dreego"
         </section>
 
         <section id="live" class="mt-16" aria-labelledby="live-heading">
-            <h2 id="live-heading" class="text-3xl font-bold tracking-tight text-slate-950">Live demos</h2>
+            <h2 id="live-heading" class="text-3xl font-bold tracking-tight text-white">Live demos</h2>
             <div class="mt-6 grid gap-5 md:grid-cols-2"><@SSECard/><@WSCard/><@WSEcho/></div>
         </section>
 
         <section id="pricing" class="mt-16" aria-labelledby="pricing-heading">
-            <h2 id="pricing-heading" class="text-3xl font-bold tracking-tight text-slate-950">UI foundations</h2>
+            <h2 id="pricing-heading" class="text-3xl font-bold tracking-tight text-white">UI foundations</h2>
             <div class="mt-6 grid gap-5 md:grid-cols-2">
                 <@Card>
                     {#slot header}<h3 class="text-xl font-semibold">Typed controls</h3>{/slot}
-                    <p class="text-slate-600">Native semantics, visible focus, and themes owned by the application.</p>
+                    <p class="text-slate-300">Native semantics, visible focus, and themes owned by the application.</p>
                     <@Toggle id="privacy" name="privacy" label="Privacy protection" checked={true} disabled={false}/>
                     <@CodeBox code="ui.Register(app, ui.Options)" language="go" label="Theme registration"/>
                 </@Card>

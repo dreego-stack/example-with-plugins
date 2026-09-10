@@ -1,7 +1,9 @@
-github.com/dreego-stack/dreego v0.6.4 h1:Gw8B3Tos43X92MLfn+xOUe+OPTS2JuiJdSsilUjPUdA=
-github.com/dreego-stack/dreego v0.6.4/go.mod h1:7ggBSyGwx59mJA9cdJXvCpgKjYSqSQb9Xnm4GK0+UIg=
-github.com/dreego-stack/plugin-example v0.0.1 h1:fd3STvIeMKhj3b6FdX/9cLveXlHayLR9LzVJLtsRcgY=
-github.com/dreego-stack/plugin-example v0.0.1/go.mod h1:Q9UNfQSzeoqpOEtWPFTAbNB460uFUbLK2b+QCnvEK4Q=
+github.com/dreego-stack/dreego v0.6.6 h1:xgcFjNDUc8u9tLoUTzUr42uZ5nOh2AdlGpUSXccYbIY=
+github.com/dreego-stack/dreego v0.6.6/go.mod h1:7ggBSyGwx59mJA9cdJXvCpgKjYSqSQb9Xnm4GK0+UIg=
+github.com/dreego-stack/dreego-ui v0.0.3 h1:OmJY+Ii2WIMWypkXdIPG4xmjU642klUJLPW5XVMa1ik=
+github.com/dreego-stack/dreego-ui v0.0.3/go.mod h1:gRjjiU6YyiRgpoErNe1L0Y/brSa4XEVq2O0ktFqM4fI=
+github.com/dreego-stack/plugin-example v0.0.2 h1:VvmFCF9n9X25cinTamhLTo3xu1M/MV9C41tc88umfMs=
+github.com/dreego-stack/plugin-example v0.0.2/go.mod h1:iEwEanl02fAKcT1rJTqFG6Gz6ETrKwBr/YekZetrQLA=
 github.com/dreego-stack/plugin-sse v0.0.2 h1:MEFa4eSNyKFtR0tCDsD8Ivncbu8tu2EqNk5WaXa6ZAY=
 github.com/dreego-stack/plugin-sse v0.0.2/go.mod h1:T27NWPPrnrl6T0vCmY9jI423kzH1+BN3kjlNTxynkGQ=
 github.com/dreego-stack/plugin-tailwind v0.0.1 h1:2LZ5bsRPkg3MpPjDKnML9Df7VIrkRHc2HONbuO6sjds=

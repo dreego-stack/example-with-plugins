@@ -21,14 +21,11 @@ make run
 
 Open http://localhost:8080 in your browser.
 
-The demo imports Dreego UI components from the `dreego-ui` Go module and
-installs their `.dreego` sources into `www/components/dreegoui`. The local
-replace is temporary development wiring until dreego-ui has its first
-published module version; all ecosystem plugins remain online module versions.
-
-The current online `plugin-example v0.0.1` still targets the pre-v0.6 Dreego
-API, so the generated UI packages are tested independently with `go test
-./www/...` until a compatible plugin-example release is available.
+The demo imports Dreego UI components from the `dreego-ui` Go module. During
+`dreego generate`, the generator resolves the module's `.dreego` sources and
+writes generated Go code into `www/components/dreegoui`; the source files are
+not copied into this repository or loaded at runtime. All dependencies use
+published online module versions with fixed tags.
 
 ## What You See
 
