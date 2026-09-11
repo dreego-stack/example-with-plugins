@@ -35,5 +35,5 @@ make dev        # watch + rebuild + restart on change
 
 - Max 300 lines per handwritten file
 - No code comments (except where needed for clarity)
-- Go 1.22+, prefer standard library
+- Go 1.27+, prefer standard library
 - .dreego files in www/routes/ and www/layouts/

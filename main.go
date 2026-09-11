@@ -7,6 +7,7 @@ import (
 	"time"
 
 	dreego "github.com/dreego-stack/dreego/core"
+	"github.com/dreego-stack/dreego/core/ssr"
 	example "github.com/dreego-stack/plugin-example"
 	sse "github.com/dreego-stack/plugin-sse"
 	_ "github.com/dreego-stack/plugin-tailwind"
@@ -44,7 +45,7 @@ func main() {
 	if port := os.Getenv("PORT"); port != "" {
 		addr = ":" + port
 	}
-	if err := app.Listen(addr); err != nil {
+	if err := ssr.Listen(app, addr); err != nil {
 		log.Fatal(err)
 	}
 }
